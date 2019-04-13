@@ -17,12 +17,7 @@ import com.opengles.nativeglesview.R;
 import com.opengles.nativeglesview.Render.FBORenderer;
 
 public class Shape_FBO {
-	private static String TAG = "Shape";
-	private float vertices[];
-	private float texures[];
-	private float normals[];
-
-	private int mVertexCount;
+	private static String TAG = "ShapeFBO";
 
 	private FloatBuffer mSqureBuffer;
 	private FloatBuffer mSqureBufferfbo;
@@ -31,89 +26,85 @@ public class Shape_FBO {
 	private int mWindowProgram;
 	private int mLoadedTextureId;
 	private Context mContext;
-	private float mVertexArray[]=new float[9];
-	private float mColorArray[]=new float[8];
 
-	private FloatBuffer mCoorBuffer;//顶点纹理坐标数据缓冲
-	private FloatBuffer mVertexBuffer;
 
 	public Shape_FBO(Context context) {
 		this.mContext = context;
-		initVetexData();
+		this.initVetexData();
 
 	}
 
 	public void initVetexData() {
-		initTexture(R.drawable.texture1);
-		float [] squareVertexs = new float[] {
+		//生成纹理
+		mLoadedTextureId=initTexture(R.drawable.texture1);
+
+		//准备绘制数据
+		float [] bgVertex = new float[] {
 				-1f,-1f,  0,1,
 				-1f,1f,  0,0,
 				1f,-1f,  1,1,
 				1f,1f,  1,0
 		};
-		ByteBuffer vbb0 = ByteBuffer.allocateDirect(squareVertexs.length * 4);
+		ByteBuffer vbb0 = ByteBuffer.allocateDirect(bgVertex.length * 4);
 		vbb0.order(ByteOrder.nativeOrder());
 		mSqureBuffer = vbb0.asFloatBuffer();
-		mSqureBuffer.put(squareVertexs);
+		mSqureBuffer.put(bgVertex);
 		mSqureBuffer.position(0);
 
 
-		float [] squareVertexsfbo = new float[] {
+		float [] fboVertex = new float[] {
 				-1f,-1f,  0,1,
 				-1f,1f,  0,0,
 				1f,-1f,  1,1,
 				1f,1f,  1,0
 		};
-		ByteBuffer vbb1 = ByteBuffer.allocateDirect(squareVertexsfbo.length * 4);
+		ByteBuffer vbb1 = ByteBuffer.allocateDirect(fboVertex.length * 4);
 		vbb1.order(ByteOrder.nativeOrder());
 		mSqureBufferfbo = vbb1.asFloatBuffer();
-		mSqureBufferfbo.put(squareVertexsfbo);
+		mSqureBufferfbo.put(fboVertex);
 		mSqureBufferfbo.position(0);
-
-
 
 	}
 
-	public void initTexture(int res) {
+	public int initTexture(int res) {
 		Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), res);
 
 		int [] textures = new int[1];
 		GLES20.glGenTextures(1, textures, 0);
-		mLoadedTextureId = textures[0];
-		GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mLoadedTextureId);
+		//绑定纹理缓存到纹理单元
+		GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textures[0]);
+		//设置采样，拉伸方式
 		GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER,GLES20.GL_NEAREST);
 		GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D,GLES20.GL_TEXTURE_MAG_FILTER,GLES20.GL_LINEAR);
 		GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S,GLES20.GL_MIRRORED_REPEAT);
 		GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T,GLES20.GL_MIRRORED_REPEAT);
+		//指定纹理图片生成2D纹理
 		GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0);
+		//释放bitmap
 		bitmap.recycle();
+		//解除绑定
 		GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, 0);
+		return textures[0];
 	}
 
 	public void draw(float[] mvpMatrix, float[] mMatrix) {
-
 	    // 生成FrameBuffer
 	    int [] framebuffers = new int[1];
 	    GLES20.glGenFramebuffers(1, framebuffers, 0);
 		// 生成Texture
 		int [] textures = new int[2];
 		GLES20.glGenTextures(2, textures, 0);
-		//配置texture
-		int colorTxtureId = textures[1];
+		int colorTxtureId = textures[0];
+		//绑定纹理缓存到纹理单元
 		GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, colorTxtureId);
+		//设置采样，拉伸方式
 		GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER,GLES20.GL_NEAREST);
 		GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D,GLES20.GL_TEXTURE_MAG_FILTER,GLES20.GL_LINEAR);
 		GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S,GLES20.GL_MIRRORED_REPEAT);
 		GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T,GLES20.GL_MIRRORED_REPEAT);
-//		GLES20.glTexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGB, 1024, 1024, 0, GLES20.GL_RGB, GLES20.GL_UNSIGNED_SHORT_5_6_5, null);
-		GLES20.glTexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGBA, 1024, 1024,0, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, null);
-		if (GLES20.glCheckFramebufferStatus(GLES20.GL_FRAMEBUFFER)!= GLES20.GL_FRAMEBUFFER_COMPLETE) {
-			Log.e("zzzzzz", "glFramebufferTexture2D error");
-		}
-		GLES20.glBindTexture(GLES20.GL_TEXTURE_2D,0);
+		//生成2D纹理
 
-
-
+		GLES20.glTexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGB, FBORenderer.sScreenWidth, FBORenderer.sScreenHeight,0, GLES20.GL_RGB, GLES20.GL_UNSIGNED_SHORT_5_6_5, null);
 
 		//绑定framebuffer
 	    int framebufferId = framebuffers[0];
@@ -121,9 +112,9 @@ public class Shape_FBO {
 		//挂载textureID到framebufferId
 		GLES20.glFramebufferTexture2D(GLES20.GL_FRAMEBUFFER, GLES20.GL_COLOR_ATTACHMENT0, GLES20.GL_TEXTURE_2D, colorTxtureId, 0);
 
-
-//		GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
-
+		if (GLES20.glCheckFramebufferStatus(GLES20.GL_FRAMEBUFFER)== GLES20.GL_FRAMEBUFFER_COMPLETE) {
+			Log.e("shapefbo", "glFramebufferTexture2D error");
+		}
 
 		int frameBufferVertexShader = loaderShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode);
 		int frameBufferFagmentShader = loaderShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
@@ -133,7 +124,6 @@ public class Shape_FBO {
 		GLES20.glAttachShader(mFrameBufferProgram, frameBufferFagmentShader);
 		GLES20.glLinkProgram(mFrameBufferProgram);
 
-//		--
 		int positionHandle1 = GLES20.glGetAttribLocation(mFrameBufferProgram, "aPosition");
 		int textureCoordHandle1 = GLES20.glGetAttribLocation(mFrameBufferProgram, "aTextureCoord");
 		int textureHandle1 = GLES20.glGetUniformLocation(mFrameBufferProgram, "uTexture");
@@ -145,15 +135,14 @@ public class Shape_FBO {
 		GLES20.glEnableVertexAttribArray(textureCoordHandle1);
 //		GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
 		GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mLoadedTextureId);
+
 		GLES20.glUniform1i(textureHandle1, 0);
 		GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
 
 		GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER,0);
 
 
-
-
-		/*================================render2window================================*/
+		/*================================================================*/
 		// 切换到窗口系统的缓冲区
 
 		GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);

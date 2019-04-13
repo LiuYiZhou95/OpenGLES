@@ -55,8 +55,9 @@ public class FBORenderer implements GLSurfaceView.Renderer{
         Matrix.rotateM(mModuleMatrix, 0, yAngle, 0, 1, 0);
         Matrix.multiplyMM(mViewProjectionMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
         Matrix.multiplyMM(mMVPMatrix, 0, mViewProjectionMatrix, 0, mModuleMatrix, 0);
-        GLES20.glViewport(0, 0, 1024, 1024);
+//        GLES20.glViewport(0, 0, 1024, 1024);
 
+        mRectangle.draw(mMVPMatrix, mModuleMatrix);
         mRectangle.draw(mMVPMatrix, mModuleMatrix);
     }
 }
