@@ -41,8 +41,8 @@ public class Shape {
 		mVertexArray[3]=0.5f;mVertexArray[4]=-0.5f;mVertexArray[5]=0.0f;
 		mVertexArray[6]=-0.5f;mVertexArray[7]=-0.5f;mVertexArray[8]=0.0f;
 
-		mColorArray[0]=1.0f;mColorArray[1]=0.0f;mColorArray[2]=0.0f;mColorArray[3]=0.0f;
-		mColorArray[4]=0.0f;mColorArray[5]=1.0f;mColorArray[6]=0.0f;mColorArray[7]=0.0f;
+		mColorArray[0]=0.0f;mColorArray[1]=0.0f;mColorArray[2]=1.0f;mColorArray[3]=0.0f;
+		mColorArray[4]=0.0f;mColorArray[5]=0.0f;mColorArray[6]=1.0f;mColorArray[7]=0.0f;
 		mColorArray[8]=0.0f;mColorArray[9]=0.0f;mColorArray[10]=1.0f;mColorArray[11]=0.0f;
 
 		mVertexCount=mVertexArray.length/3;

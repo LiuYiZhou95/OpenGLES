@@ -12,16 +12,11 @@ import com.opengles.nativeglesview.Render.MyRenderer;
  * @description
  */
 public class MySurfaceView extends GLSurfaceView {
-    private MyRenderer mRenderer;
-    private FBORenderer fboRenderer;
 
-    public MySurfaceView (Context context){
+    public MySurfaceView (Context context,GLSurfaceView.Renderer renderer){
         super(context);
         this.setEGLContextClientVersion(2);
-//        mRenderer=new MyRenderer(context);
-//        this.setRenderer(mRenderer);
-        fboRenderer = new FBORenderer(context);
-        this.setRenderer(fboRenderer);
+        this.setRenderer(renderer);
         this.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
     }
 

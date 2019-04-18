@@ -16,6 +16,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.FBOActivity">
+            <intent-filter>
+                <action android:name="com.opengles.nativeglesview.FBO_ACTIVITY_ACTION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.CommonTranglesActivity">
+            <intent-filter>
+                <action android:name="com.opengles.nativeglesview.COMMONTRANGLES_ACTIVITY_ACTION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.NativeTranglesActivity">
+            <intent-filter>
+                <action android:name="com.opengles.nativeglesview.NATIVETRANGLES_ACTIVITY_ACTION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
