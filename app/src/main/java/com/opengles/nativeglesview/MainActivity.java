@@ -42,5 +42,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button button4=(Button)findViewById(R.id.eglActivityButton);
+        button4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent =new Intent("com.opengles.nativeglesview.EGL_ACTIVITY_ACTION");
+                startActivity(intent);
+            }
+        });
+
+
     }
 }

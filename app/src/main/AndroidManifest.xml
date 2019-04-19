@@ -37,6 +37,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.EGLActivity">
+            <intent-filter>
+                <action android:name="com.opengles.nativeglesview.EGL_ACTIVITY_ACTION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

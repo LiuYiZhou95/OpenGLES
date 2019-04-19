@@ -23,5 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Native普通三角形"/>
+    <Button
+        android:id="@+id/eglActivityButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义EGL环境"/>
 
 </LinearLayout>
