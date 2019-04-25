@@ -52,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button button5=(Button)findViewById(R.id.eglsurfaceActivityButton);
+        button5.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent =new Intent("com.opengles.nativeglesview.EGLSURFACE_ACTIVITY_ACTION");
+                startActivity(intent);
+            }
+        });
+
 
     }
 }

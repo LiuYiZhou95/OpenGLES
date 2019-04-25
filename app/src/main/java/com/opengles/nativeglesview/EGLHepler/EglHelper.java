@@ -118,6 +118,8 @@ public class EglHelper {
             mEgl = null;
         }
     }
-
+    public EGLContext getEglContext() {
+        return mEglContext;
+    }
 }
 

@@ -43,7 +43,13 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activity.EglSurfaceActivity">
+            <intent-filter>
+                <action android:name="com.opengles.nativeglesview.EGLSURFACE_ACTIVITY_ACTION" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
