@@ -10,9 +10,15 @@ import android.view.SurfaceView;
 
 import com.opengles.nativeglesview.EGLHepler.EglHelper;
 import com.opengles.nativeglesview.R;
-
+/**
+ * @author action.zhou
+ * @version v1.0
+ * @date Created in 2019/4/16
+ * @description
+ */
 public class EGLActivity extends AppCompatActivity {
 
+    private static String TAG = "EGLActivity";
 
     private SurfaceView surfaceView;
 

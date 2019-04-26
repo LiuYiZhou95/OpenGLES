@@ -12,8 +12,14 @@ import com.opengles.nativeglesview.util.ShaderUtil;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
+/**
+ * @author action.zhou
+ * @version v1.0
+ * @date Created in 2019/4/14
+ * @description
+ */
 public class FBORenderer implements GLSurfaceView.Renderer{
+    private static String TAG = "FBORenderer";
     public static int sScreenWidth;
     public static int sScreenHeight;
     private Shape_FBO mRectangle;

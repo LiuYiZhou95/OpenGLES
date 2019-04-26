@@ -15,7 +15,12 @@ import android.util.Log;
 
 import com.opengles.nativeglesview.R;
 import com.opengles.nativeglesview.Render.FBORenderer;
-
+/**
+ * @author action.zhou
+ * @version v1.0
+ * @date Created in 2019/4/14
+ * @description
+ */
 public class Shape_FBO {
 	private static String TAG = "ShapeFBO";
 

@@ -13,7 +13,7 @@ import com.opengles.nativeglesview.View.EglSurfaceView;
  */
 public class EGLRender implements EglSurfaceView.Render{
 
-    String TAG = "EGLrender";
+    private static String TAG = "EGLrender";
     public EGLRender() {
 
     }

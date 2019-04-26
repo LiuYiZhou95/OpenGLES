@@ -13,6 +13,8 @@ import com.opengles.nativeglesview.util.*;
  * @description
  */
 public class MyRenderer implements GLSurfaceView.Renderer{
+    private static String TAG = "MyRenderer";
+
     public float mAngleX=0;
     public float mAngleY=0;
     private Context mContext;

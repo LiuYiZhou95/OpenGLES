@@ -9,6 +9,8 @@ import com.opengles.nativeglesview.View.MySurfaceView;
 
 public class NativeTranglesActivity extends AppCompatActivity {
 
+    private static String TAG = "NativeTranglesActivity";
+
     private MyRenderer fboRenderer;
     private GLSurfaceView mGLView;
     @Override

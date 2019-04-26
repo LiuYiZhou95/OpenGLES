@@ -16,7 +16,12 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-
+/**
+ * @author action.zhou
+ * @version v1.0
+ * @date Created in 2019/4/10
+ * @description
+ */
 public class Shape {
 	private static String TAG = "Shape";
 	private int TextureId;

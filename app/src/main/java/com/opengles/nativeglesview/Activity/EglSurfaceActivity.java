@@ -12,6 +12,7 @@ import com.opengles.nativeglesview.View.EglSurfaceView;
  * @description
  */
 public class EglSurfaceActivity extends AppCompatActivity {
+    private static String TAG = "EglSurfaceActivity";
 
     private EGLRender eglRenderer;
     private EglSurfaceView eglSurfaceView;

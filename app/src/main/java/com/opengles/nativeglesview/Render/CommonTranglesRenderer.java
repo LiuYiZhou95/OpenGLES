@@ -10,7 +10,12 @@ import com.opengles.nativeglesview.Shape.Shape_FBO;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
+/**
+ * @author action.zhou
+ * @version v1.0
+ * @date Created in 2019/4/10
+ * @description
+ */
 public class CommonTranglesRenderer implements GLSurfaceView.Renderer{
     public static int sScreenWidth;
     public static int sScreenHeight;
