@@ -115,8 +115,11 @@
            |--SGLView 
    ### 示意图
    
+<<<<<<< HEAD
+=======
     <img src="READMEIMG/滤镜-模糊.png"  alt="B612Kaji_任务1" height="330" width="195">
     <img src="READMEIMG/滤镜-分通道.png"  alt="B612Kaji_任务1" height="330" width="195">
+>>>>>>> 35c18cb69b7e4e5ce733404ce44efae1de9ce73c
    ![示意图](READMEIMG/滤镜-模糊.png)
    ![示意图](READMEIMG/滤镜-分通道.png)  
     
