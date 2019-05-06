@@ -38,6 +38,7 @@ public class SGLView extends GLSurfaceView {
         setEGLContextClientVersion(2);
         render=new SGLRender(this);
         setRenderer(render);
+        //传入时间时必须修改为主动渲染
         setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
 
         try {

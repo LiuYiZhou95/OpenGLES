@@ -141,9 +141,10 @@ public abstract class AFilter implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 gl) {
+        //传入时间值
         CurTime+=0.02f;
         if (CurTime > 5.00f) CurTime = 1.00f;
-        System.out.println(CurTime+"ssssss");
+
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT| GLES20.GL_DEPTH_BUFFER_BIT);
         GLES20.glUseProgram(mProgram);
         onDrawSet();
