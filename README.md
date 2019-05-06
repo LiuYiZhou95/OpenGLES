@@ -3,14 +3,55 @@
 
 ## 项目结构
 
-    ---------
-    |-MainActivity 入口Activity
-        |--Activity 子Activity
-        |--EGLHelper EGL渲染环境
-        |--Render 渲染器
-        |--Shape  形状
-        |--util   辅助工具
-        |--View   View类
+    .
+    ├── CMakeLists.txt
+    │   ├── main
+    │   │   ├── AndroidManifest.xml
+    │   │   ├── assets
+    │   │   │   ├── filter
+    │   │   │   │   ├── color_fragment.sh
+    │   │   │   │   ├── default_fragment.sh
+    │   │   │   │   ├── default_vertex.sh
+    │   │   │   │   ├── fugu_fragment.sh
+    │   │   │   │   ├── half_color_fragment.glsl
+    │   │   │   │   └── half_color_vertex.glsl
+    │   │   │   └── texture
+    │   │   │       └── fengmian.jpg
+    │   │   ├── java
+    │   │   │   └── com
+    │   │   │       └── opengles
+    │   │   │           └── nativeglesview
+    │   │   │               ├── Activity
+    │   │   │               │   ├── CommonTranglesActivity.java
+    │   │   │               │   ├── EGLActivity.java
+    │   │   │               │   ├── EglSurfaceActivity.java
+    │   │   │               │   ├── FBOActivity.java
+    │   │   │               │   ├── NativeTranglesActivity.java
+    │   │   │               │   └── imageManageActivity.java
+    │   │   │               ├── EGLHepler
+    │   │   │               │   └── EglHelper.java
+    │   │   │               ├── MainActivity.java
+    │   │   │               ├── Render
+    │   │   │               │   ├── CommonTranglesRenderer.java
+    │   │   │               │   ├── EGLRender.java
+    │   │   │               │   ├── FBORenderer.java
+    │   │   │               │   ├── MyRenderer.java
+    │   │   │               │   └── SGLRender.java
+    │   │   │               ├── Shape
+    │   │   │               │   ├── Shape.java
+    │   │   │               │   └── Shape_FBO.java
+    │   │   │               ├── View
+    │   │   │               │   ├── EglSurfaceView.java
+    │   │   │               │   ├── MySurfaceView.java
+    │   │   │               │   └── SGLView.java
+    │   │   │               ├── filter
+    │   │   │               │   ├── AFilter.java
+    │   │   │               │   ├── ColorFilter.java
+    │   │   │               │   └── ContrastColorFilter.java
+    │   │   │               └── util
+    │   │   │                   ├── ShaderSoucreType.java
+    │   │   │                   ├── ShaderUtil.java
+    │   │   │                   └── ShaderUtils.java
         
 # native 绘制三角形
    ## 时间：2019.4.8
@@ -57,3 +98,22 @@
       3.EGLActivity入口activity
    ### 代码查看顺序
        EGLActivity->.EglSurfaceView->EGLRender
+#  引入图像处理（滤镜）
+   ## 时间：2019.5.5
+   ### 通过shader处理图像，模拟滤镜
+   ### 代码查看路径
+       ---Activity
+        |     |-- imageManageActivity   
+        |
+       ---filter
+        |     |-- AFilter     
+        |     |-- ColorFilter
+        |     |-- ContrastColorFilter
+       ---Render
+        |     |--SGLRender 
+       ---View
+           |--SGLView 
+   ### 示意图
+   ![示意图](READMEIMG/滤镜-模糊.png)
+        
+    

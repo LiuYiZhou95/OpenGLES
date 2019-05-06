@@ -34,4 +34,10 @@
         android:layout_height="wrap_content"
         android:text="EGLSurface环境"/>
 
+    <Button
+        android:id="@+id/imagemanageActivityButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="图片处理"/>
+
 </LinearLayout>

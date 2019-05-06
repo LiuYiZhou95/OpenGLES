@@ -61,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button button6=(Button)findViewById(R.id.imagemanageActivityButton);
+        button6.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent =new Intent("com.opengles.nativeglesview.IMAGEMANAGE_ACTIVITY_ACTION");
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
