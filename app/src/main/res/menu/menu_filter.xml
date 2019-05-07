@@ -18,4 +18,8 @@
         android:title="放大镜" />
     <item android:id="@+id/mSep"
         android:title="分通道" />
+    <item android:id="@+id/mLighting"
+        android:title="闪屏" />
+    <item android:id="@+id/mp"
+        android:title="预留" />
 </menu>

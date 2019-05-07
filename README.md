@@ -130,5 +130,21 @@
                |     |--SGLRender 
               ---View
                   |--SGLView 
-   ![示意图](READMEIMG/滤镜-分通道.png)  
-    
+   ![示意图](READMEIMG/滤镜-分通道.gif)  
+#  加入闪屏效果
+   ## 时间：2019.5.7
+   ### 通过shader处理图像，模拟滤镜，传入时间值，动态修改图像
+   ### 代码查看路径  
+        ---Activity
+               |     |-- imageManageActivity   
+               |
+              ---filter
+               |     |-- AFilter     
+               |     |-- ColorFilter
+               |     |-- ContrastColorFilter
+              ---Render
+               |     |--SGLRender 
+              ---View
+                  |--SGLView 
+   ![示意图](READMEIMG/滤镜-闪屏.gif)   
+   

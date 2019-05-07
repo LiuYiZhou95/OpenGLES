@@ -44,7 +44,8 @@ public class ColorFilter extends AFilter {
         WARM(2,new float[]{0.1f,0.1f,0.0f}),
         BLUR(3,new float[]{0.006f,0.004f,0.002f}),
         MAGN(4,new float[]{0.0f,0.0f,0.4f}),
-        SEPAR(5,new float[]{0.0f,0.0f,0.0f});
+        SEPAR(5,new float[]{0.0f,0.0f,0.0f}),
+        LIGHTING(6,new float[]{0.0f,0.0f,0.0f});
 
         private int vChangeType;
         private float[] data;

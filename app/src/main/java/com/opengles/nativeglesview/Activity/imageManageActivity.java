@@ -79,6 +79,9 @@ public class imageManageActivity extends AppCompatActivity {
             case R.id.mSep:
                 mGLView.setFilter(new ContrastColorFilter(this, ColorFilter.Filter.SEPAR));
                 break;
+            case R.id.mLighting:
+                mGLView.setFilter(new ContrastColorFilter(this, ColorFilter.Filter.LIGHTING));
+                break;
         }
         mGLView.getRender().getFilter().setHalf(isHalf);
         mGLView.requestRender();
